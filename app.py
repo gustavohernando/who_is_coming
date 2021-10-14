@@ -19,15 +19,15 @@ def home():
     Appointment_date = transformacion(request.form['select-appointment'])
     SMS_received = yesno(request.form['select-Scholarship'])
     Scholarship = yesno(request.form['select-Scholarship'])
-    Hipertension= request.form['select-Hipertension']
-    Alcoholism = yesno(request.form['select-Alcoholism'])
+    Hipertension= yesno(request.form['select-Hipertension'])
+    Alcoholism = yesno(request.form['sellect-Alcoholism'])
     Gender_index = gender(request.form["select - Genre"])
 
     #calculated features
     Appointment_month = Appointment_date[1]
     ScheduledDay_month = Scheduled_date[1]
     ScheduledDay_Hour = Scheduled_date[4]
-    WaitingDays = int(date(Scheduled_date[0],Scheduled_date[1],Scheduled_date[2]) - date(Appointment_date[0],Appointment_date[1],Appointment_date[2]))
+    WaitingDays = int(-date(Scheduled_date[0],Scheduled_date[1],Scheduled_date[2]) + date(Appointment_date[0],Appointment_date[1],Appointment_date[2]))
 
     #return trasnformacion [año,mes,dia,day_of_week,hora,minuto]
     x_predict = np.array([Scholarship, Hipertension, Alcoholism, SMS_received,
