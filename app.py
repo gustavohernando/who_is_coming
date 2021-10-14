@@ -1,10 +1,9 @@
 from flask import Flask, render_template, request
 import pickle
 from datetime import date
-from datetime import datetime
 import numpy as np
 from utils.libreria import  transformacion, yesno, gender
-#2250
+#2306
 
 model = pickle.load(open('utils/gradient_boosting.model', 'rb'))
 app = Flask(__name__)
@@ -14,15 +13,14 @@ def man():
     return render_template('home_v3.html')
 
 @app.route('/predict', methods=['POST'])
-
 def home():
     Scheduled_date = transformacion(request.form['select-schedule'])
     Appointment_date = transformacion(request.form['select-appointment'])
-    SMS_received = yesno(request.form['select-Scholarship'])
+    SMS_received = yesno(request.form['select-Sms'])
     Scholarship = yesno(request.form['select-Scholarship'])
     Hipertension= yesno(request.form['select-Hipertension'])
-    Alcoholism = yesno(request.form['sellect-Alcoholism'])
-    Gender_index = gender(request.form["select - Genre"])
+    Alcoholism = yesno(request.form['select-Alcoholism'])
+    Gender_index = gender(request.form["select-Genre"])
 
     #calculated features
     Appointment_month = Appointment_date[1]
