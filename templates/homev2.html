@@ -49,16 +49,26 @@
 
                              <br><br>
 
-             <b> Waiting Days :  <input type="number", name='WaitingDays', placeholder="0"> <br><br></b>
-             <b> Appointment Month : <input type="number", name='Appointment_month', placeholder="0", min="1" max="12"> <br><br></b>
-            <b> Scheduled Day Month : <input type="number", name='ScheduledDay_month', placeholder="0", min="1" max="12"> <br><br></b>
-             <b> Scheduled Day Hour : <input type="number", name='ScheduledDay_Hour', placeholder="0", min="0" max="24"> <br><br></b>
-             <b> Genre :  <select name="select-Genre">
-                            <option value="value1">Male</option>
-                              <option value="value2">Female</option>
+         <b> Genre :  <select name="select-Genre">
+                        <option value="value1">Male</option>
+                          <option value="value2">Female</option>
 
+              </select>
+
+                             <br><br>
+
+         <b> <form name="Scheduled_date" method="post" action="/send.php">
+                 <!-- Campo de entrada de fecha -->
+                Select date:
+                <input type="datetime-local" name="fecha de cita"  step="1" /><br><br>
+              </select>
+
+                             <br><br>
+         <b> <form name="Appointment_date" method="post" action="/send.php">
+                 <!-- Campo de entrada de fecha -->
+                Select date:
+                <input type="datetime-local" name="fecha de cita"  step="1" /><br><br>
                             </select>
-
                              <br><br></b>
         <input type="submit" , value='¿Habrá hoy gambas?' >
     </form>

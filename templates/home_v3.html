@@ -1,0 +1,91 @@
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="home_2_style.css">
+        <h1 align='center'>¿VENDRÁ HOY EL PACIENTE?</h1>
+        <hr width="77%">
+    </head>
+
+    <body>
+        <!--Aquí colocamos el texto que queramos-->
+        <br>
+        <p><b>
+            Productivization Project – (Project name)
+            This is a Data Science project based on a PoC (proof of concept). There are three main parts that constitutes the project.
+            Those parts are: ETL with Spark, modeling and Databricks´s cloud analysis, and creating an app and uploading it in a cloud´s platform.<br><br>
+            First part, ETL with Spark<br>
+            Dataset found and used is about medical appointments. The selected team for this part has worked with the data.
+            They have treated and cleaned the data using Spark (outliers, nulls, making new tables, etc).
+            Feature engineering is being also applied.<br><br>
+            Second part, modeling and Databricks´s cloud analysis<br>
+            Dataset is cleaned and ready to use. The selected team has worked to implement a machine learning model that tries to predict the assistance
+            or not assistance of the medical appointments.
+            For this purpose, they have used Pandas, SKlearn among others. Finally, they have also made an analysis of Databricks´s cloud too.<br><br>
+            Third part, creating an app and uploading it in a cloud´s platform<br>
+            Machine learning model is ready to use. By using Flask, the selected team has created an app.
+            This app will contain the model. Tryouts have been made in local to test the app.
+            Once the app worked correctly, the team launched the app in PythonAnywhere. It is just not local, now everyone can have access to it.
+        </b></p>
+
+        <!--A continuación creamos el formulario-->
+        <form method="post", action=" {{url_for('hone')}} ">
+
+            <!--SCHOLARSHIP-->
+            <p><b>
+                Scholarship:<select name = 'select-Scholarship'>
+                            <option value = 'afirmative_scholar'>Yes</option>
+                            <option value = 'negative_scholar'>No</option>
+                            </select>
+            </b></p>
+
+            <!--HIPERTENSION-->
+            <p><b>
+                Hipertension:<select name = 'select-Hipertension'>
+                            <option value = 'hipertension_afirmative'>Yes</option>
+                            <option value = 'hipertension_negative'>No</option>
+                            </select>
+            </b></p>
+
+            <!--ALCOHOLISM-->
+            <p><b>
+                Alcoholism:<select name = 'select-Alcoholism'>
+                            <option value = 'alcoholism_afirmative'>Yes</option>
+                            <option value = 'alcoholism_negative'>No</option>
+                            </select>
+            </b></p>
+
+            <!--SMS-->
+            <p><b>
+                Sms:<select name = 'select-Sms'>
+                            <option value = 'sms_afirmative'>Yes</option>
+                            <option value = 'sms_negative'>No</option>
+                            </select>
+            </b></p>
+
+            <!--GENRE-->
+            <p><b>
+                Genre:<select name = 'select-Genre'>
+                            <option value = 'genre_afirmative'>F</option>
+                            <option value = 'genre_negative'>M</option>
+                            </select>
+            </b></p>
+
+            <!--SCHEDULE-->
+            <p><b>
+                Schedule:<select name = 'select-schedule'>
+                    <input type = 'datetime-local', name = 'fecha_cita_pedida', step = '1'>
+                </select>
+            </b></p>
+
+            <!--APPOINTMENT-->
+            <p><b>
+                Appointment:<select name = 'select-appointment'>
+                    <input type = 'datetime-local', name = 'fecha_cita_dada', step = '1'>
+                </select>
+            </b></p>
+        </form>
+
+        <img src="https://c.smartrecruiters.com/sr-company-logo-prod-dc5/603c9a6abe9ff14555e2c18c/huge?r=s3-eu-central-1&_1614584680812">
+
+</html>

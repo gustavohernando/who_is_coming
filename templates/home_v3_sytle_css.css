@@ -1,0 +1,15 @@
+body{
+    height: 98%;
+    width: 98%;
+    text-align: center;
+    font-size: 16px;
+    background-color: darkgray;
+}
+
+img{
+    height: 5%;
+    width: 10%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

@@ -3,39 +3,38 @@ import pickle
 from datetime import date
 from datetime import datetime
 import numpy as np
-from utils.libreria import  transformacion
+from utils.libreria import  transformacion, yesno, gender
 
 model = pickle.load(open('utils/gradient_boosting.model', 'rb'))
-
 app = Flask(__name__)
 
 @app.route('/')
 def man():
-    return render_template('home.html')
+    return render_template('home_v3.html')
 
 @app.route('/predict', methods=['POST'])
+
 def home():
-    Scheduled_date = transformacion(request.form['Variable 1'])
-    Appointment_date = transformacion(request.form['Variable 2'])
-    Scholarship_raw = request.form['Variable 3']
-    Gender_index_raw = request.form['Variable 4']
-    Hipertension_raw = request.form['Variable 5']
-    data4 = request.form['Variable 6']
-    data5 = request.form['Variable 5']
-    data6 = request.form['Variable 6']
-    arr = np.array([[data1, data2, data3, data4, data4, data6]])
-    pred = model.predict(arr)
-    return render_template('gambas.html', variable=pred)
+    Scheduled_date = transformacion(request.form['select-schedule'])
+    Appointment_date = transformacion(request.form['select-appointment'])
+    SMS_received = yesno(request.form['select-Scholarship'])
+    Scholarship = yesno(request.form['select-Scholarship'])
+    Hipertension= request.form['select-Hipertension']
+    Alcoholism = yesno(request.form['select-Alcoholism'])
+    Gender_index = gender(request.form["select - Genre"])
 
-def transformacion(fecha_en_crudo):#dd/mm/aaaa --:--
-    dia=fecha_en_crudo[:2]
-    mes=fecha_en_crudo[3:5]
-    año=fecha_en_crudo[6:10]
-    hora=fecha_en_crudo[11:13]
-    minuto=fecha_en_crudo[14:16]
-    return int(dia),int(mes),int(año),int(hora),int(minuto)
+    #calculated features
+    Appointment_month = Appointment_date[1]
+    ScheduledDay_month = Scheduled_date[1]
+    ScheduledDay_Hour = Scheduled_date[4]
+    WaitingDays = int(date(Scheduled_date[0],Scheduled_date[1],Scheduled_date[2]) - date(Appointment_date[0],Appointment_date[1],Appointment_date[2]))
 
-
+    #return trasnformacion [año,mes,dia,day_of_week,hora,minuto]
+    x_predict = np.array([Scholarship, Hipertension, Alcoholism, SMS_received,
+                          WaitingDays, Appointment_month, ScheduledDay_month,ScheduledDay_Hour,
+                          Gender_index])
+    pred = model.predict(x_predict)
+    return render_template('after_v3.html', variable=pred)
 
 if __name__ == "__main__":
     app.run(debug=True)
