@@ -4,6 +4,7 @@ from datetime import date
 from datetime import datetime
 import numpy as np
 from utils.libreria import  transformacion, yesno, gender
+#2250
 
 model = pickle.load(open('utils/gradient_boosting.model', 'rb'))
 app = Flask(__name__)
