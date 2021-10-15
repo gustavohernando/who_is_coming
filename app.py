@@ -44,7 +44,7 @@ def home():
     x_predict_arr = x_predict_arr.reshape(1, -1)
     x_predict = pd.DataFrame(x_predict_arr,columns=columns)
     #pred = model.predict(x_predict)
-    pred = 1
+    pred = 0
     #print(pred)
     return render_template('after_v3.html', data=pred)
 
