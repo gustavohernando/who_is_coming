@@ -43,11 +43,12 @@ def home():
     #print(columns)
     x_predict_arr = x_predict_arr.reshape(1, -1)
     x_predict = pd.DataFrame(x_predict_arr,columns=columns)
-    pred = model.predict(x_predict)
+    #pred = model.predict(x_predict)
+    pred = 1
     #print(pred)
     return render_template('after_v3.html', data=pred)
 
 if __name__ == "__main__":
     app.run(debug=True)
     #For running in a local host
-    #app.run(host='127.0.0.1', port=8000, debug=True)
+    app.run(host='127.0.0.1', port=8000, debug=True)
