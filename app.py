@@ -3,7 +3,7 @@ import pickle
 from datetime import date
 import numpy as np
 from utils.libreria import  transformacion, yesno, gender
-#2306
+#042
 
 model = pickle.load(open('utils/gradient_boosting.model', 'rb'))
 app = Flask(__name__)
@@ -36,4 +36,5 @@ def home():
     return render_template('after_v3.html', variable=pred)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    #app.run(debug=True)
+    app.run(host='127.0.0.1', port=8000, debug=True)
